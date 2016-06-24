@@ -1,0 +1,66 @@
+﻿body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: whitesmoke;
+}
+
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.img-avatar {
+    height: 150px;
+    width: 150px;
+}
+
+.img-small {
+    height: 50px;
+    width: 50px;
+}
+
+.panel-heading h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 75%;
+    padding-top: 8px;
+}
+
+.navbar-inverse {
+    background-color: #4765a0;
+    border-color: whitesmoke;
+    border: 2px solid whitesmoke;
+}
+
+.shadowCard {
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.table>tbody>tr>td {
+    vertical-align: middle;
+}
+
+.fa {
+  padding-right: 5px;
+}
+
+.navbar-fixed-bottom {
+  background-color: #1d2140;
+  color: whitesmoke;
+}
