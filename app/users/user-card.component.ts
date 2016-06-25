@@ -14,12 +14,13 @@ import { ItemsService } from '../shared/utils/items.service';
 import { NotificationService } from '../shared/utils/notification.service';
 import { ConfigService } from '../shared/utils/config.service';
 import { DateFormatPipe } from '../shared/pipes/date-format.pipe';
+import { HighlightDirective } from '../shared/directives/highlight.directive';
 
 @Component({
     moduleId: module.id,
     selector: 'user-card',
     templateUrl: 'user-card.component.html',
-    directives: [MODAL_DIRECTIVES],
+    directives: [MODAL_DIRECTIVES, HighlightDirective],
     pipes: [DateFormatPipe],
     animations: [
         trigger('flyInOut', [
