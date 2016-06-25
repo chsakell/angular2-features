@@ -50,6 +50,7 @@ export class UserListComponent implements OnInit {
         // inform user
         this.notificationService.printSuccessMessage(_user.name + ' has been created');
         console.log(_user.id);
+        this.itemsService.setItem<IUser>(this.users, (u) => u.id == -1, _user);
         // todo fix user with id:-1
     }
 

@@ -23,6 +23,19 @@ export class ItemsService {
     }
 
     /*
+    Finds a specific item in an array using a predicate and repsaces it
+    */
+    setItem<T>(array: Array<T>, predicate: Predicate<T>, item: T) {
+        var _oldItem = _.find(array, predicate);
+        if(_oldItem){
+            var index = _.indexOf(array, _oldItem);
+            array.splice(index, 1, item);
+        } else {
+            array.push(item);
+        }
+    }
+
+    /*
     Adds an item to zero index
     */
     addItemToStart<T>(array: Array<T>, item: any) {
