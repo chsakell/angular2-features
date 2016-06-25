@@ -66,8 +66,8 @@ export class ScheduleListComponent implements OnInit {
     keyboard: boolean = true;
     backdrop: string | boolean = true;
 
-    constructor(private dataService: DataService,
-        private slimLoader: SlimLoadingBarService,
+    constructor(private slimLoader: SlimLoadingBarService,
+        private dataService: DataService,
         private itemsService: ItemsService,
         private notificationService: NotificationService,
         private configService: ConfigService) { }
