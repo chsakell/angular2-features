@@ -19,7 +19,7 @@ import { DateFormatPipe } from '../shared/pipes/date-format.pipe';
 @Component({
     moduleId: module.id,
     selector: 'app-schedules',
-    templateUrl: 'schedules.component.html',
+    templateUrl: 'schedule-list.component.html',
     directives: [ROUTER_DIRECTIVES, MODAL_DIRECTIVES, PAGINATION_DIRECTIVES],
     pipes: [DateFormatPipe],
     animations: [
@@ -41,7 +41,7 @@ import { DateFormatPipe } from '../shared/pipes/date-format.pipe';
         ])
     ]
 })
-export class SchedulesComponent implements OnInit {
+export class ScheduleListComponent implements OnInit {
 
     schedules: ISchedule[];
     apiHost: string;

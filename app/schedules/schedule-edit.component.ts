@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouteSegment, RouteTree, OnActivate } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FORM_DIRECTIVES, NgForm } from '@angular/common';
 
 import { DataService } from '../shared/services/data.service';
@@ -20,27 +20,26 @@ import { NKDatetime } from 'ng2-datetime/ng2-datetime';
     providers: [MappingService],
     pipes: [DateFormatPipe]
 })
-export class ScheduleEditComponent implements OnActivate, OnInit {
+export class ScheduleEditComponent implements OnInit {
     apiHost: string;
     id: number;
     schedule: IScheduleDetails;
     scheduleLoaded: boolean = false;
     statuses: string[];
     types: string[];
+    private sub: any;
 
-    constructor(private router: Router,
+    constructor(private route: ActivatedRoute,
+        private router: Router,
         private dataService: DataService,
         private utilsService: UtilsService,
         private configService: ConfigService,
         private mappingService: MappingService,
         private slimLoader: SlimLoadingBarService) { }
 
-    routerOnActivate(current: RouteSegment, prev?: RouteSegment,
-        currTree?: RouteTree, prevTree?: RouteTree) {
-        this.id = +currTree.parent(current).getParam('id');
-    }
-
     ngOnInit() {
+        // (+) converts string 'id' to a number
+	    this.id = +this.route.snapshot.params['id'];
         this.apiHost = this.configService.getApiHost();
         this.loadScheduleDetails();
     }
@@ -65,7 +64,7 @@ export class ScheduleEditComponent implements OnActivate, OnInit {
             });
     }
 
-    updateSchedule(editScheduleForm : NgForm) {
+    updateSchedule(editScheduleForm: NgForm) {
         console.log(editScheduleForm.value);
 
         var scheduleMapped = this.mappingService.mapScheduleDetailsToSchedule(this.schedule);

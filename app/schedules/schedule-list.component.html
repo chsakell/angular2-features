@@ -32,7 +32,7 @@
                 <td><button class="btn btn-primary" (click)="viewScheduleDetails(schedule.id)">
             <i class="fa fa-info-circle" aria-hidden="true"></i>Details</button>
                 </td>
-                <td><a class="btn btn-primary" [routerLink]="['/schedule',schedule.id,'edit']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a></td>
+                <td><a class="btn btn-primary" [routerLink]="['/schedules',schedule.id,'edit']"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</a></td>
                 <td>
                     <button class="btn btn-danger" (click)="removeSchedule(schedule)"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button>
                 </td>
