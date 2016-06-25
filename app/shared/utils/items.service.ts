@@ -1,50 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Predicate } from '../interfaces'
 
-
 import * as _ from 'lodash';
 
-declare var alertify: any;
-
 @Injectable()
-export class UtilsService {
-    private _notifier: any = alertify;
+export class ItemsService {
 
     constructor() { }
-
-    /*
-    Util method to serialize a string to a specific Type
-    */
-    getSerialized<T>(arg: any): T {
-        return <T>JSON.parse(JSON.stringify(arg));
-    }
-
-    /*
-    Opens a confirmation dialog using the alertify.js lib
-    */
-    openConfirmationDialog(message: string, okCallback: () => any) {
-        this._notifier.confirm(message, function (e) {
-            if (e) {
-                okCallback();
-            } else {
-            }
-        });
-    }
-
-    /*
-    Prints a success message using the alertify.js lib
-    */
-    printSuccessMessage(message: string) {
-
-        this._notifier.success(message);
-    }
-
-    /*
-    Prints an error message using the alertify.js lib
-    */
-    printErrorMessage(message: string) {
-        this._notifier.error(message);
-    }
 
     /*
     Removes an item from an array using the lodash library
@@ -74,5 +36,12 @@ export class UtilsService {
     {
         var result = _.map(array, property);
         return <R><any>result;
+    }
+
+    /*
+    Util method to serialize a string to a specific Type
+    */
+    getSerialized<T>(arg: any): T {
+        return <T>JSON.parse(JSON.stringify(arg));
     }
 }

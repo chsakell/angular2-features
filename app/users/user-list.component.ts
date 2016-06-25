@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import {SlimLoadingBarService} from 'ng2-slim-loading-bar/ng2-slim-loading-bar';
 
 import { DataService } from '../shared/services/data.service';
-import { UtilsService } from '../shared/utils/utils.service';
+import { ItemsService } from '../shared/utils/items.service';
+import { NotificationService } from '../shared/utils/notification.service';
 import { IUser } from '../shared/interfaces';
 import { UserCardComponent } from './user-card.component';
 
@@ -11,8 +12,7 @@ import { UserCardComponent } from './user-card.component';
     moduleId: module.id,
     selector: 'users',
     templateUrl: 'user-list.component.html',
-    directives: [UserCardComponent],
-    providers: [UtilsService]
+    directives: [UserCardComponent]
 })
 export class UserListComponent implements OnInit {
 
@@ -20,7 +20,8 @@ export class UserListComponent implements OnInit {
     addingUser: boolean = false;
 
     constructor(private dataService: DataService,
-        private utilsService: UtilsService,
+        private itemsService: ItemsService,
+        private notificationService: NotificationService,
         private slimLoader: SlimLoadingBarService) { }
 
     ngOnInit() {
@@ -32,22 +33,22 @@ export class UserListComponent implements OnInit {
             },
             error => {
                 this.slimLoader.complete();
-                this.utilsService.printErrorMessage('Failed to load users. ' + error);
+                this.notificationService.printErrorMessage('Failed to load users. ' + error);
             });
     }
 
     removeUser(user: any) {
-        var _user: IUser = this.utilsService.getSerialized<IUser>(user.value);
-        this.utilsService.removeItemFromArray<IUser>(this.users, _user);
+        var _user: IUser = this.itemsService.getSerialized<IUser>(user.value);
+        this.itemsService.removeItemFromArray<IUser>(this.users, _user);
         // inform user
-        this.utilsService.printSuccessMessage(_user.name + ' has been removed');
+        this.notificationService.printSuccessMessage(_user.name + ' has been removed');
     }
 
     userCreated(user: any) {
-        var _user: IUser = this.utilsService.getSerialized<IUser>(user.value);
+        var _user: IUser = this.itemsService.getSerialized<IUser>(user.value);
         this.addingUser = false;
         // inform user
-        this.utilsService.printSuccessMessage(_user.name + ' has been created');
+        this.notificationService.printSuccessMessage(_user.name + ' has been created');
         console.log(_user.id);
         // todo fix user with id:-1
     }
@@ -55,12 +56,12 @@ export class UserListComponent implements OnInit {
     addUser() {
         this.addingUser = true;
         var newUser = { id: -1, name: '', avatar: 'avatar_05.png', profession: '', schedulesCreated: 0 };
-        this.utilsService.addItemToStart<IUser>(this.users, newUser);
+        this.itemsService.addItemToStart<IUser>(this.users, newUser);
         //this.users.splice(0, 0, newUser);
     }
 
     cancelAddUser() {
         this.addingUser = false;
-        this.utilsService.removeItems<IUser>(this.users, x => x.id < 0);
+        this.itemsService.removeItems<IUser>(this.users, x => x.id < 0);
     }
 }

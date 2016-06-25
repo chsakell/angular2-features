@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { IUser, ISchedule, IScheduleDetails, Pagination, PaginatedResult } from '../interfaces';
-import { UtilsService } from '../utils/utils.service';
+import { ItemsService } from '../utils/items.service';
 import { ConfigService } from '../utils/config.service';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class DataService {
     _baseUrl: string = '';
 
     constructor(private http: Http,
-        private utilService: UtilsService,
+        private itemsService: ItemsService,
         private configService: ConfigService) {
         this._baseUrl = configService.getApiURI();
     }
@@ -106,7 +106,7 @@ export class DataService {
 
                 if (res.headers.get("Pagination") != null) {
                     //var pagination = JSON.parse(res.headers.get("Pagination"));
-                    var paginationHeader: Pagination = this.utilService.getSerialized<Pagination>(JSON.parse(res.headers.get("Pagination")));
+                    var paginationHeader: Pagination = this.itemsService.getSerialized<Pagination>(JSON.parse(res.headers.get("Pagination")));
                     console.log(paginationHeader);
                     peginatedResult.pagination = paginationHeader;
                 }

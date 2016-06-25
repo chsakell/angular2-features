@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FORM_DIRECTIVES, NgForm } from '@angular/common';
 
 import { DataService } from '../shared/services/data.service';
-import { UtilsService } from '../shared/utils/utils.service';
+import { ItemsService } from '../shared/utils/items.service';
+import { NotificationService } from '../shared/utils/notification.service';
 import { ConfigService } from '../shared/utils/config.service';
 import { MappingService } from '../shared/utils/mapping.service';
 import { ISchedule, IScheduleDetails, IUser } from '../shared/interfaces';
@@ -32,7 +33,8 @@ export class ScheduleEditComponent implements OnInit {
     constructor(private route: ActivatedRoute,
         private router: Router,
         private dataService: DataService,
-        private utilsService: UtilsService,
+        private itemsService: ItemsService,
+        private notificationService: NotificationService,
         private configService: ConfigService,
         private mappingService: MappingService,
         private slimLoader: SlimLoadingBarService) { }
@@ -48,7 +50,7 @@ export class ScheduleEditComponent implements OnInit {
         this.slimLoader.start();
         this.dataService.getScheduleDetails(this.id)
             .subscribe((schedule: IScheduleDetails) => {
-                this.schedule = this.utilsService.getSerialized<IScheduleDetails>(schedule);
+                this.schedule = this.itemsService.getSerialized<IScheduleDetails>(schedule);
                 this.scheduleLoaded = true;
                 // Convert date times to readable format
                 this.schedule.timeStart = new Date(this.schedule.timeStart.toString()); // new DateFormatPipe().transform(schedule.timeStart, ['local']);
@@ -60,7 +62,7 @@ export class ScheduleEditComponent implements OnInit {
             },
             error => {
                 this.slimLoader.complete();
-                this.utilsService.printErrorMessage('Failed to load schedule. ' + error);
+                this.notificationService.printErrorMessage('Failed to load schedule. ' + error);
             });
     }
 
@@ -72,29 +74,29 @@ export class ScheduleEditComponent implements OnInit {
         this.slimLoader.start();
         this.dataService.updateSchedule(scheduleMapped)
             .subscribe(() => {
-                this.utilsService.printSuccessMessage('Schedule has been updated');
+                this.notificationService.printSuccessMessage('Schedule has been updated');
                 this.slimLoader.complete();
             },
             error => {
                 this.slimLoader.complete();
-                this.utilsService.printErrorMessage('Failed to update schedule. ' + error);
+                this.notificationService.printErrorMessage('Failed to update schedule. ' + error);
             });
     }
 
     removeAttendee(attendee: IUser) {
-        this.utilsService.openConfirmationDialog('Are you sure you want to remove '
+        this.notificationService.openConfirmationDialog('Are you sure you want to remove '
             + attendee.name + ' from this schedule?',
             () => {
                 this.slimLoader.start();
                 this.dataService.deleteScheduleAttendee(this.schedule.id, attendee.id)
                     .subscribe(() => {
-                        this.utilsService.removeItemFromArray<IUser>(this.schedule.attendees, attendee);
-                        this.utilsService.printSuccessMessage(attendee.name + ' will not attend the schedule.');
+                        this.itemsService.removeItemFromArray<IUser>(this.schedule.attendees, attendee);
+                        this.notificationService.printSuccessMessage(attendee.name + ' will not attend the schedule.');
                         this.slimLoader.complete();
                     },
                     error => {
                         this.slimLoader.complete();
-                        this.utilsService.printErrorMessage('Failed to remove ' + attendee.name + ' ' + error);
+                        this.notificationService.printErrorMessage('Failed to remove ' + attendee.name + ' ' + error);
                     });
             });
     }

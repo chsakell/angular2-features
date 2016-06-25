@@ -10,7 +10,8 @@ import { MODAL_DIRECTIVES, ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import { IUser, ISchedule } from '../shared/interfaces';
 import { DataService } from '../shared/services/data.service';
-import { UtilsService } from '../shared/utils/utils.service';
+import { ItemsService } from '../shared/utils/items.service';
+import { NotificationService } from '../shared/utils/notification.service';
 import { ConfigService } from '../shared/utils/config.service';
 import { DateFormatPipe } from '../shared/pipes/date-format.pipe';
 
@@ -19,7 +20,6 @@ import { DateFormatPipe } from '../shared/pipes/date-format.pipe';
     selector: 'user-card',
     templateUrl: 'user-card.component.html',
     directives: [MODAL_DIRECTIVES],
-    providers: [UtilsService],
     pipes: [DateFormatPipe],
     animations: [
         trigger('flyInOut', [
@@ -63,21 +63,22 @@ export class UserCardComponent implements OnInit {
     keyboard: boolean = true;
     backdrop: string | boolean = true;
 
-    constructor(private utilsService: UtilsService,
+    constructor(private itemsService: ItemsService,
+        private notificationService: NotificationService,
         private slimLoader: SlimLoadingBarService,
         private dataService: DataService,
         private configService: ConfigService) { }
 
     ngOnInit() {
         this.apiHost = this.configService.getApiHost();
-        this.edittedUser = this.utilsService.getSerialized<IUser>(this.user);
+        this.edittedUser = this.itemsService.getSerialized<IUser>(this.user);
         if (this.user.id < 0)
             this.editUser();
     }
 
     editUser() {
         this.onEdit = !this.onEdit;
-        this.edittedUser = this.utilsService.getSerialized<IUser>(this.user);
+        this.edittedUser = this.itemsService.getSerialized<IUser>(this.user);
         // <IUser>JSON.parse(JSON.stringify(this.user)); // todo Utils..
     }
 
@@ -85,16 +86,16 @@ export class UserCardComponent implements OnInit {
         this.slimLoader.start();
         this.dataService.createUser(this.edittedUser)
             .subscribe((userCreated) => {
-                this.user = this.utilsService.getSerialized<IUser>(userCreated);
-                this.edittedUser = this.utilsService.getSerialized<IUser>(this.user);
+                this.user = this.itemsService.getSerialized<IUser>(userCreated);
+                this.edittedUser = this.itemsService.getSerialized<IUser>(this.user);
                 this.onEdit = false;
 
                 this.userCreated.emit({ value: userCreated });
                 this.slimLoader.complete();
             },
             error => {
-                this.utilsService.printErrorMessage('Failed to created user');
-                this.utilsService.printErrorMessage(error);
+                this.notificationService.printErrorMessage('Failed to created user');
+                this.notificationService.printErrorMessage(error);
                 this.slimLoader.complete();
             });
     }
@@ -105,18 +106,18 @@ export class UserCardComponent implements OnInit {
             .subscribe(() => {
                 this.user = this.edittedUser;
                 this.onEdit = !this.onEdit;
-                this.utilsService.printSuccessMessage(this.user.name + ' has been updated');
+                this.notificationService.printSuccessMessage(this.user.name + ' has been updated');
                 this.slimLoader.complete();
             },
             error => {
-                this.utilsService.printErrorMessage('Failed to edit user');
-                this.utilsService.printErrorMessage(error);
+                this.notificationService.printErrorMessage('Failed to edit user');
+                this.notificationService.printErrorMessage(error);
                 this.slimLoader.complete();
             });
     }
 
     openRemoveModal() {
-        this.utilsService.openConfirmationDialog('Are you sure you want to remove '
+        this.notificationService.openConfirmationDialog('Are you sure you want to remove '
             + this.user.name + '?',
             () => {
                 this.slimLoader.start();
@@ -129,7 +130,7 @@ export class UserCardComponent implements OnInit {
                         this.slimLoader.complete();
                         this.slimLoader.complete();
                     }, error => {
-                        this.utilsService.printErrorMessage(error);
+                        this.notificationService.printErrorMessage(error);
                         this.slimLoader.complete();
                     })
             });
@@ -159,7 +160,7 @@ export class UserCardComponent implements OnInit {
             },
             error => {
                 this.slimLoader.complete();
-                this.utilsService.printErrorMessage('Failed to load users. ' + error);
+                this.notificationService.printErrorMessage('Failed to load users. ' + error);
             });
         this.output = '(opened)';
     }

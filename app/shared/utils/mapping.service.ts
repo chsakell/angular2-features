@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { ISchedule, IScheduleDetails, IUser } from '../interfaces';
-import  { UtilsService } from './utils.service'
+import  { ItemsService } from './items.service'
 
 @Injectable()
 export class MappingService {
 
-    constructor(private utilsService : UtilsService) { }
+    constructor(private itemsService : ItemsService) { }
 
     mapScheduleDetailsToSchedule(scheduleDetails: IScheduleDetails): ISchedule {
         var schedule: ISchedule = {
@@ -22,7 +22,7 @@ export class MappingService {
             dateUpdated: scheduleDetails.dateUpdated,
             creator: scheduleDetails.creator,
             creatorId: scheduleDetails.creatorId,
-            attendees: this.utilsService.getPropertyValues<IUser, number[]>(scheduleDetails.attendees, 'id')
+            attendees: this.itemsService.getPropertyValues<IUser, number[]>(scheduleDetails.attendees, 'id')
         }
 
         return schedule;
