@@ -5,16 +5,16 @@ import {SlimLoadingBarService} from 'ng2-slim-loading-bar/ng2-slim-loading-bar';
 import { DataService } from '../shared/services/data.service';
 import { UtilsService } from '../shared/utils/utils.service';
 import { IUser } from '../shared/interfaces';
-import { UserCardComponent } from './userCard.component';
+import { UserCardComponent } from './user-card.component';
 
 @Component({
     moduleId: module.id,
     selector: 'users',
-    templateUrl: 'users.component.html',
+    templateUrl: 'user-list.component.html',
     directives: [UserCardComponent],
     providers: [UtilsService]
 })
-export class UsersComponent implements OnInit {
+export class UserListComponent implements OnInit {
 
     users: IUser[];
     addingUser: boolean = false;
@@ -48,6 +48,8 @@ export class UsersComponent implements OnInit {
         this.addingUser = false;
         // inform user
         this.utilsService.printSuccessMessage(_user.name + ' has been created');
+        console.log(_user.id);
+        // todo fix user with id:-1
     }
 
     addUser() {

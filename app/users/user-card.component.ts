@@ -17,7 +17,7 @@ import { DateFormatPipe } from '../shared/pipes/date-format.pipe';
 @Component({
     moduleId: module.id,
     selector: 'user-card',
-    templateUrl: 'userCard.component.html',
+    templateUrl: 'user-card.component.html',
     directives: [MODAL_DIRECTIVES],
     providers: [UtilsService],
     pipes: [DateFormatPipe],
