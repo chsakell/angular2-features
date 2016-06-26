@@ -6,7 +6,7 @@ import './rxjs-operators';
 
 import { APP_PROVIDERS } from './app.providers';
 
-import {SlimLoadingBar, SlimLoadingBarService} from 'ng2-slim-loading-bar/ng2-slim-loading-bar';
+import { SlimLoadingBar } from 'ng2-slim-loading-bar/ng2-slim-loading-bar';
 
 @Component({
     selector: 'scheduler',
