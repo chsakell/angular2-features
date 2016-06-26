@@ -1,4 +1,4 @@
-import { provideRouter  }          from '@angular/router';
+import { provideRouter  } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { UserListComponent } from './users/user-list.component';
