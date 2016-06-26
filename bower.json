@@ -1,5 +1,5 @@
 {
-  "name": "asp.net",
+  "name": "scheduler.spa",
   "private": true,
   "dependencies": {
     "alertify.js" : "0.3.11",

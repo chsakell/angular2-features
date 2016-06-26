@@ -4,8 +4,6 @@ var gulp = require('gulp');
 //var ts = require('gulp-typescript');
 var tslint = require('gulp-tslint');
 
-//var tsProject = ts.createProject(config.tsConfig);
-
 gulp.task('clean', function () {
     return del([config.compiledTs, config.sourceMaps]);
 });
