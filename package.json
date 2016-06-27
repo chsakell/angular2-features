@@ -3,7 +3,7 @@
   "name": "scheduler",
   "author": "Chris Sakellarios",
   "license": "MIT",
-  "repository": "https://github.com/chsakell",
+  "repository": "https://github.com/chsakell/angular2-features",
   "private": true,
   "dependencies": {
     "@angular/common": "2.0.0-rc.3",
