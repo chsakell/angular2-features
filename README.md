@@ -44,3 +44,8 @@ It shows how to use several controls such as <i>Modals</i>, <i>DateTimePicker</i
 </tr>
 </tbody>
 </table>
+<p>
+<a href="https://chsakell.files.wordpress.com/2016/06/angular-scheduler-spa-hq.gif" target="_blank">
+<img src="https://chsakell.files.wordpress.com/2016/06/angular-scheduler-spa-hq.gif" alt="angular-features-gif" />
+</a>
+</p>
