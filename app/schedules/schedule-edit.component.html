@@ -29,19 +29,19 @@
         <div class="row">
             <div class="col-md-4">
                 <label class="control-label"><i class="fa fa-user" aria-hidden="true"></i>Creator</label>
-                <input type="text" class="form-control" [(ngModel)]="schedule.creator" ngControl="creator" #creator="ngForm" required pattern=".{5,50}"
+                <input type="text" class="form-control" [(ngModel)]="schedule.creator" name="creator" ngControl="creator" #creator="ngForm" required pattern=".{5,50}"
                 />
             </div>
 
             <div class="col-md-4">
                 <label class="control-label"><i class="fa fa-text-width" aria-hidden="true"></i>Title</label>
-                <input type="text" class="form-control" [(ngModel)]="schedule.title" ngControl="title" #title="ngForm" required pattern=".{5,20}"
+                <input type="text" class="form-control" [(ngModel)]="schedule.title" name="title" ngControl="title" #title="ngForm" required pattern=".{5,20}"
                 />
             </div>
 
             <div class="col-md-4">
                 <label class="control-label"><i class="fa fa-paragraph" aria-hidden="true"></i>Description</label>
-                <input type="text" class="form-control" [(ngModel)]="schedule.description" ngControl="description" #description="ngForm"
+                <input type="text" class="form-control" [(ngModel)]="schedule.description" name="description" ngControl="description" #description="ngForm"
                     required pattern=".{10,}" />
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="row">
             <div class="col-xs-6">
                 <label class="control-label"><i class="fa fa-calendar-o" aria-hidden="true"></i>Time Start</label>
-                <datetime [(ngModel)]="schedule.timeStart" [timepicker]="{icon: 'fa fa-clock-o'}" [datepicker]="{icon: 'fa fa-calendar', autoclose : true, orientation : 'bottom'}"
+                <datetime [(ngModel)]="schedule.timeStart" name="timeStart" [timepicker]="{icon: 'fa fa-clock-o'}" [datepicker]="{icon: 'fa fa-calendar', autoclose : true, orientation : 'bottom'}"
                     ngControl="timeStart" #timeStart="ngForm"></datetime>
                 <!--<input type="text" class="form-control" [(ngModel)]="schedule.timeStart" required />-->
             </div>
@@ -59,7 +59,7 @@
             <div class="col-xs-6">
                 <label class="control-label"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Time End</label>
                 <!--<input type="text" class="form-control" [(ngModel)]="schedule.timeEnd" required />-->
-                <datetime [(ngModel)]="schedule.timeEnd" [timepicker]="{icon: 'fa fa-clock-o'}" [datepicker]="{icon: 'fa fa-calendar', autoclose : true, orientation : 'bottom' }"
+                <datetime [(ngModel)]="schedule.timeEnd" name="timeEnd" [timepicker]="{icon: 'fa fa-clock-o'}" [datepicker]="{icon: 'fa fa-calendar', autoclose : true, orientation : 'bottom' }"
                     ngControl="timeEnd" #timeEnd="ngForm"></datetime>
             </div>
         </div>
@@ -69,19 +69,19 @@
         <div class="row">
             <div class="col-md-4">
                 <label class="control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>Location</label>
-                <input type="text" class="form-control" [(ngModel)]="schedule.location" ngControl="location" #location="ngForm" required
+                <input type="text" class="form-control" [(ngModel)]="schedule.location" name="location" ngControl="location" #location="ngForm" required
                 />
             </div>
 
             <div class="col-md-4 selectContainer">
                 <label class="control-label"><i class="fa fa-spinner" aria-hidden="true"></i>Status</label>
-                <select class="form-control" [ngModel]="schedule.status">
+                <select class="form-control" [ngModel]="schedule.status" name="status">
                     <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
                 </select>
             </div>
             <div class="col-md-4 selectContainer">
                 <label class="control-label"><i class="fa fa-tag" aria-hidden="true"></i>Type</label>
-                <select class="form-control" [ngModel]="schedule.type">
+                <select class="form-control" [ngModel]="schedule.type" name="type">
                     <option *ngFor="let type of types" [value]="type">{{type}}</option>
                 </select>
             </div>
