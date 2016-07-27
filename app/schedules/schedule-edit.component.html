@@ -70,13 +70,13 @@
 
             <div class="col-md-4 selectContainer">
                 <label class="control-label"><i class="fa fa-spinner" aria-hidden="true"></i>Status</label>
-                <select class="form-control" [ngModel]="schedule.status" name="status">
+                <select class="form-control" [(ngModel)]="schedule.status" name="status">
                     <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
                 </select>
             </div>
             <div class="col-md-4 selectContainer">
                 <label class="control-label"><i class="fa fa-tag" aria-hidden="true"></i>Type</label>
-                <select class="form-control" [ngModel]="schedule.type" name="type">
+                <select class="form-control" [(ngModel)]="schedule.type" name="type">
                     <option *ngFor="let type of types" [value]="type">{{type}}</option>
                 </select>
             </div>
