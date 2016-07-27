@@ -1,9 +1,7 @@
-<form #editScheduleForm="ngForm" *ngIf="scheduleLoaded" (ngSubmit)="updateSchedule(editScheduleForm)" novalidate>
-
-    <div class="alert alert-danger" [hidden]="editScheduleForm.valid">
+<form #editScheduleForm="ngForm" *ngIf="scheduleLoaded" novalidate>
+    <div class="alert alert-danger" [hidden]="editScheduleForm.form.valid">
         <ul *ngIf="creator.dirty && !creator.valid">
-            <li *ngIf="creator.errors.required">Creator name is required</li>
-            <li *ngIf="creator.errors.pattern">Creator name should have 5-50 characters</li>
+            <li>Creator name is required <i>(5-50 characters)</i></li>
         </ul>
         <ul *ngIf="title.dirty && !title.valid">
             <li *ngIf="title.errors.required">Title is required</li>
@@ -20,7 +18,7 @@
 
     <button type="button" class="btn btn-danger" (click)="back()">
         <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Back</button>
-    <button type="submit" [disabled]="!editScheduleForm.valid" class="btn btn-default">
+    <button type="button" [disabled]="!editScheduleForm.form.valid" class="btn btn-default" (click)="updateSchedule(editScheduleForm)">
         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button>
 
     <hr/>
@@ -29,20 +27,19 @@
         <div class="row">
             <div class="col-md-4">
                 <label class="control-label"><i class="fa fa-user" aria-hidden="true"></i>Creator</label>
-                <input type="text" class="form-control" [(ngModel)]="schedule.creator" name="creator" ngControl="creator" #creator="ngForm" required pattern=".{5,50}"
+                <input type="text" class="form-control" [(ngModel)]="schedule.creator" name="creator" #creator="ngModel"  required pattern=".{5,50}" disabled
                 />
             </div>
 
             <div class="col-md-4">
                 <label class="control-label"><i class="fa fa-text-width" aria-hidden="true"></i>Title</label>
-                <input type="text" class="form-control" [(ngModel)]="schedule.title" name="title" ngControl="title" #title="ngForm" required pattern=".{5,20}"
+                <input type="text" class="form-control" [(ngModel)]="schedule.title" name="title" #title="ngModel"  required pattern=".{5,20}"
                 />
             </div>
 
             <div class="col-md-4">
                 <label class="control-label"><i class="fa fa-paragraph" aria-hidden="true"></i>Description</label>
-                <input type="text" class="form-control" [(ngModel)]="schedule.description" name="description" ngControl="description" #description="ngForm"
-                    required pattern=".{10,}" />
+                <input type="text" class="form-control" [(ngModel)]="schedule.description" name="description" #description="ngModel"  required pattern=".{10,}" />
             </div>
         </div>
     </div>
@@ -51,16 +48,14 @@
         <div class="row">
             <div class="col-xs-6">
                 <label class="control-label"><i class="fa fa-calendar-o" aria-hidden="true"></i>Time Start</label>
-                <datetime [(ngModel)]="schedule.timeStart" name="timeStart" [timepicker]="{icon: 'fa fa-clock-o'}" [datepicker]="{icon: 'fa fa-calendar', autoclose : true, orientation : 'bottom'}"
-                    ngControl="timeStart" #timeStart="ngForm"></datetime>
+                <datetime [(ngModel)]="schedule.timeStart" name="timeStart" [timepicker]="{icon: 'fa fa-clock-o'}" [datepicker]="{icon: 'fa fa-calendar', autoclose : true, orientation : 'bottom'}"></datetime>
                 <!--<input type="text" class="form-control" [(ngModel)]="schedule.timeStart" required />-->
             </div>
 
             <div class="col-xs-6">
                 <label class="control-label"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Time End</label>
                 <!--<input type="text" class="form-control" [(ngModel)]="schedule.timeEnd" required />-->
-                <datetime [(ngModel)]="schedule.timeEnd" name="timeEnd" [timepicker]="{icon: 'fa fa-clock-o'}" [datepicker]="{icon: 'fa fa-calendar', autoclose : true, orientation : 'bottom' }"
-                    ngControl="timeEnd" #timeEnd="ngForm"></datetime>
+                <datetime [(ngModel)]="schedule.timeEnd" name="timeEnd" [timepicker]="{icon: 'fa fa-clock-o'}" [datepicker]="{icon: 'fa fa-calendar', autoclose : true, orientation : 'bottom' }"></datetime>
             </div>
         </div>
     </div>
@@ -69,7 +64,7 @@
         <div class="row">
             <div class="col-md-4">
                 <label class="control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>Location</label>
-                <input type="text" class="form-control" [(ngModel)]="schedule.location" name="location" ngControl="location" #location="ngForm" required
+                <input type="text" class="form-control" [(ngModel)]="schedule.location" name="location" #location="ngModel"  required
                 />
             </div>
 

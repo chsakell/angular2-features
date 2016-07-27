@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FORM_DIRECTIVES, NgForm } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 import { DataService } from '../shared/services/data.service';
 import { ItemsService } from '../shared/utils/items.service';
@@ -17,7 +17,7 @@ import { NKDatetime } from 'ng2-datetime/ng2-datetime';
     moduleId: module.id,
     selector: 'app-schedule-edit',
     templateUrl: 'schedule-edit.component.html',
-    directives: [NKDatetime, FORM_DIRECTIVES],
+    directives: [NKDatetime],
     providers: [MappingService],
     pipes: [DateFormatPipe]
 })
