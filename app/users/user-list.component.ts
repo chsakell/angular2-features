@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import {SlimLoadingBarService} from 'ng2-slim-loading-bar/ng2-slim-loading-bar';
-
 import { DataService } from '../shared/services/data.service';
 import { ItemsService } from '../shared/utils/items.service';
 import { NotificationService } from '../shared/utils/notification.service';
@@ -11,8 +9,7 @@ import { UserCardComponent } from './user-card.component';
 @Component({
     moduleId: module.id,
     selector: 'users',
-    templateUrl: 'user-list.component.html',
-    directives: [UserCardComponent]
+    templateUrl: 'user-list.component.html'
 })
 export class UserListComponent implements OnInit {
 
@@ -21,18 +18,14 @@ export class UserListComponent implements OnInit {
 
     constructor(private dataService: DataService,
         private itemsService: ItemsService,
-        private notificationService: NotificationService,
-        private slimLoader: SlimLoadingBarService) { }
+        private notificationService: NotificationService) { }
 
     ngOnInit() {
-        this.slimLoader.start();
         this.dataService.getUsers()
             .subscribe((users: IUser[]) => {
                 this.users = users;
-                this.slimLoader.complete();
             },
             error => {
-                this.slimLoader.complete();
                 this.notificationService.printErrorMessage('Failed to load users. ' + error);
             });
     }

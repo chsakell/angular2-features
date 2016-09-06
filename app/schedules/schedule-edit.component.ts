@@ -10,16 +10,10 @@ import { MappingService } from '../shared/utils/mapping.service';
 import { ISchedule, IScheduleDetails, IUser } from '../shared/interfaces';
 import { DateFormatPipe } from '../shared/pipes/date-format.pipe';
 
-import {SlimLoadingBarService} from 'ng2-slim-loading-bar/ng2-slim-loading-bar';
-import { NKDatetime } from 'ng2-datetime/ng2-datetime';
-
 @Component({
     moduleId: module.id,
     selector: 'app-schedule-edit',
-    templateUrl: 'schedule-edit.component.html',
-    directives: [NKDatetime],
-    providers: [MappingService],
-    pipes: [DateFormatPipe]
+    templateUrl: 'schedule-edit.component.html'
 })
 export class ScheduleEditComponent implements OnInit {
     apiHost: string;
@@ -36,8 +30,7 @@ export class ScheduleEditComponent implements OnInit {
         private itemsService: ItemsService,
         private notificationService: NotificationService,
         private configService: ConfigService,
-        private mappingService: MappingService,
-        private slimLoader: SlimLoadingBarService) { }
+        private mappingService: MappingService) { }
 
     ngOnInit() {
         // (+) converts string 'id' to a number
@@ -47,7 +40,7 @@ export class ScheduleEditComponent implements OnInit {
     }
 
     loadScheduleDetails() {
-        this.slimLoader.start();
+        //this.slimLoader.start();
         this.dataService.getScheduleDetails(this.id)
             .subscribe((schedule: IScheduleDetails) => {
                 this.schedule = this.itemsService.getSerialized<IScheduleDetails>(schedule);
@@ -58,10 +51,10 @@ export class ScheduleEditComponent implements OnInit {
                 this.statuses = this.schedule.statuses;
                 this.types = this.schedule.types;
 
-                this.slimLoader.complete();
+                //this.slimLoader.complete();
             },
             error => {
-                this.slimLoader.complete();
+                //this.slimLoader.complete();
                 this.notificationService.printErrorMessage('Failed to load schedule. ' + error);
             });
     }
@@ -71,14 +64,14 @@ export class ScheduleEditComponent implements OnInit {
 
         var scheduleMapped = this.mappingService.mapScheduleDetailsToSchedule(this.schedule);
 
-        this.slimLoader.start();
+        //this.slimLoader.start();
         this.dataService.updateSchedule(scheduleMapped)
             .subscribe(() => {
                 this.notificationService.printSuccessMessage('Schedule has been updated');
-                this.slimLoader.complete();
+                //this.slimLoader.complete();
             },
             error => {
-                this.slimLoader.complete();
+                //this.slimLoader.complete();
                 this.notificationService.printErrorMessage('Failed to update schedule. ' + error);
             });
     }
@@ -87,15 +80,15 @@ export class ScheduleEditComponent implements OnInit {
         this.notificationService.openConfirmationDialog('Are you sure you want to remove '
             + attendee.name + ' from this schedule?',
             () => {
-                this.slimLoader.start();
+                //this.slimLoader.start();
                 this.dataService.deleteScheduleAttendee(this.schedule.id, attendee.id)
                     .subscribe(() => {
                         this.itemsService.removeItemFromArray<IUser>(this.schedule.attendees, attendee);
                         this.notificationService.printSuccessMessage(attendee.name + ' will not attend the schedule.');
-                        this.slimLoader.complete();
+                        //this.slimLoader.complete();
                     },
                     error => {
-                        this.slimLoader.complete();
+                        //this.slimLoader.complete();
                         this.notificationService.printErrorMessage('Failed to remove ' + attendee.name + ' ' + error);
                     });
             });
