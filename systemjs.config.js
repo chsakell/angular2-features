@@ -28,6 +28,7 @@
             'lodash': 'npm:lodash/lodash.js',
             'moment': 'npm:moment/',
             'ng2-bootstrap': 'npm:ng2-bootstrap',
+            'ng2-slim-loading-bar': 'npm:ng2-slim-loading-bar',
             'symbol-observable': 'npm:symbol-observable'
         },
         // packages tells the System loader how to load when no filename and/or no extension
@@ -45,6 +46,7 @@
             },
             'moment': { main: 'moment.js', defaultExtension: 'js' },
             'ng2-bootstrap': { main: 'ng2-bootstrap.js', defaultExtension: 'js' },
+            'ng2-slim-loading-bar': { main: 'index.js', defaultExtension: 'js' },
             'symbol-observable': { main: 'index.js', defaultExtension: 'js' }
         }
     });

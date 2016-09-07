@@ -10,6 +10,7 @@ import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { Ng2BootstrapModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import { ProgressbarModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { SlimLoadingBarService, SlimLoadingBarComponent } from 'ng2-slim-loading-bar';
 import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import { AppComponent }   from './app.component';
@@ -50,6 +51,7 @@ import { NotificationService } from './shared/utils/notification.service';
         MobileHideDirective,
         ScheduleEditComponent,
         ScheduleListComponent,
+        SlimLoadingBarComponent,
         UserCardComponent,
         UserListComponent
     ],
@@ -58,7 +60,8 @@ import { NotificationService } from './shared/utils/notification.service';
         DataService,
         ItemsService,
         MappingService,
-        NotificationService
+        NotificationService,
+        SlimLoadingBarService
     ],
     bootstrap: [AppComponent]
 })

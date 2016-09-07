@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
+
 import { DataService } from '../shared/services/data.service';
 import { ItemsService } from '../shared/utils/items.service';
 import { NotificationService } from '../shared/utils/notification.service';
@@ -30,7 +32,8 @@ export class ScheduleEditComponent implements OnInit {
         private itemsService: ItemsService,
         private notificationService: NotificationService,
         private configService: ConfigService,
-        private mappingService: MappingService) { }
+        private mappingService: MappingService,
+        private loadingBarService:SlimLoadingBarService) { }
 
     ngOnInit() {
         // (+) converts string 'id' to a number
@@ -40,7 +43,7 @@ export class ScheduleEditComponent implements OnInit {
     }
 
     loadScheduleDetails() {
-        //this.slimLoader.start();
+        this.loadingBarService.start();
         this.dataService.getScheduleDetails(this.id)
             .subscribe((schedule: IScheduleDetails) => {
                 this.schedule = this.itemsService.getSerialized<IScheduleDetails>(schedule);
@@ -51,10 +54,10 @@ export class ScheduleEditComponent implements OnInit {
                 this.statuses = this.schedule.statuses;
                 this.types = this.schedule.types;
 
-                //this.slimLoader.complete();
+                this.loadingBarService.complete();
             },
             error => {
-                //this.slimLoader.complete();
+                this.loadingBarService.complete();
                 this.notificationService.printErrorMessage('Failed to load schedule. ' + error);
             });
     }
@@ -64,14 +67,14 @@ export class ScheduleEditComponent implements OnInit {
 
         var scheduleMapped = this.mappingService.mapScheduleDetailsToSchedule(this.schedule);
 
-        //this.slimLoader.start();
+        this.loadingBarService.start();
         this.dataService.updateSchedule(scheduleMapped)
             .subscribe(() => {
                 this.notificationService.printSuccessMessage('Schedule has been updated');
-                //this.slimLoader.complete();
+                this.loadingBarService.complete();
             },
             error => {
-                //this.slimLoader.complete();
+                this.loadingBarService.complete();
                 this.notificationService.printErrorMessage('Failed to update schedule. ' + error);
             });
     }
@@ -80,15 +83,15 @@ export class ScheduleEditComponent implements OnInit {
         this.notificationService.openConfirmationDialog('Are you sure you want to remove '
             + attendee.name + ' from this schedule?',
             () => {
-                //this.slimLoader.start();
+                this.loadingBarService.start();
                 this.dataService.deleteScheduleAttendee(this.schedule.id, attendee.id)
                     .subscribe(() => {
                         this.itemsService.removeItemFromArray<IUser>(this.schedule.attendees, attendee);
                         this.notificationService.printSuccessMessage(attendee.name + ' will not attend the schedule.');
-                        //this.slimLoader.complete();
+                        this.loadingBarService.complete();
                     },
                     error => {
-                        //this.slimLoader.complete();
+                        this.loadingBarService.complete();
                         this.notificationService.printErrorMessage('Failed to remove ' + attendee.name + ' ' + error);
                     });
             });

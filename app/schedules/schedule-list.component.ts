@@ -6,6 +6,7 @@ import { Component, OnInit, ViewChild, Input, Output,
     transition } from '@angular/core';
 
 import { ModalDirective } from 'ng2-bootstrap';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 import { DataService } from '../shared/services/data.service';
 import { DateFormatPipe } from '../shared/pipes/date-format.pipe';
@@ -65,7 +66,8 @@ export class ScheduleListComponent implements OnInit {
         private dataService: DataService,
         private itemsService: ItemsService,
         private notificationService: NotificationService,
-        private configService: ConfigService) { }
+        private configService: ConfigService,
+        private loadingBarService:SlimLoadingBarService) { }
 
     ngOnInit() {
         this.apiHost = this.configService.getApiHost();
@@ -73,16 +75,16 @@ export class ScheduleListComponent implements OnInit {
     }
 
     loadSchedules() {
-        //this.loadingBarService.start();
+        this.loadingBarService.start();
 
         this.dataService.getSchedules(this.currentPage, this.itemsPerPage)
             .subscribe((res: PaginatedResult<ISchedule[]>) => {
                 this.schedules = res.result;// schedules;
                 this.totalItems = res.pagination.TotalItems;
-                //this.loadingBarService.complete();
+                this.loadingBarService.complete();
             },
             error => {
-                //this.loadingBarService.complete();
+                this.loadingBarService.complete();
                 this.notificationService.printErrorMessage('Failed to load schedules. ' + error);
             });
     }
@@ -97,15 +99,15 @@ export class ScheduleListComponent implements OnInit {
     removeSchedule(schedule: ISchedule) {
         this.notificationService.openConfirmationDialog('Are you sure you want to delete this schedule?',
             () => {
-                //this.loadingBarService.start();
+                this.loadingBarService.start();
                 this.dataService.deleteSchedule(schedule.id)
                     .subscribe(() => {
                         this.itemsService.removeItemFromArray<ISchedule>(this.schedules, schedule);
                         this.notificationService.printSuccessMessage(schedule.title + ' has been deleted.');
-                        //this.loadingBarService.complete();
+                        this.loadingBarService.complete();
                     },
                     error => {
-                        //this.loadingBarService.complete();
+                        this.loadingBarService.complete();
                         this.notificationService.printErrorMessage('Failed to delete ' + schedule.title + ' ' + error);
                     });
             });
@@ -120,12 +122,12 @@ export class ScheduleListComponent implements OnInit {
                 // Convert date times to readable format
                 this.scheduleDetails.timeStart = new DateFormatPipe().transform(schedule.timeStart, ['local']);
                 this.scheduleDetails.timeEnd = new DateFormatPipe().transform(schedule.timeEnd, ['local']);
-                //this.slimLoader.complete();
+                this.loadingBarService.complete();
                 this.selectedScheduleLoaded = true;
                 this.childModal.show();//.open('lg');
             },
             error => {
-                //this.slimLoader.complete();
+                this.loadingBarService.complete();
                 this.notificationService.printErrorMessage('Failed to load schedule. ' + error);
             });
     }
