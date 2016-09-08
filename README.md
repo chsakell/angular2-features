@@ -21,6 +21,12 @@ It shows how to use several controls such as <i>Modals</i>, <i>DateTimePicker</i
 <li>Start the SPA by typing <b>npm start</b></li>
 </ol>
 
+<p>
+<a href="https://chsakell.files.wordpress.com/2016/06/angular-scheduler-spa-hq.gif" target="_blank">
+<img src="https://chsakell.files.wordpress.com/2016/06/angular-scheduler-spa-hq.gif" alt="angular-features-gif" />
+</a>
+</p>
+
 <h2>Donations</h2>
 For being part of open source projects and documenting my work here and on <a href="https://chsakell.com">chsakell's blog</a> I really do not charge anything. I try to avoid any type of ads also.
 
@@ -61,8 +67,3 @@ If you think that any information you obtained here is worth of some money and a
 </tr>
 </tbody>
 </table>
-<p>
-<a href="https://chsakell.files.wordpress.com/2016/06/angular-scheduler-spa-hq.gif" target="_blank">
-<img src="https://chsakell.files.wordpress.com/2016/06/angular-scheduler-spa-hq.gif" alt="angular-features-gif" />
-</a>
-</p>
