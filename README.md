@@ -6,7 +6,7 @@ Angular CRUD ops, Modals, Animations, Pagination, DateTimePicker, Directives and
 <li>Back-end API built with <b>ASP.NET Core</b></li>
 </ul>
 It shows how to use several controls such as <i>Modals</i>, <i>DateTimePicker</i>, <i>Pagination</i> in Angular 2 applications.
-<a href="http://wp.me/p3mRWu-199" target="_blank"><img src=https://chsakell.files.wordpress.com/2016/06/angular-io-logo.png?w=700" alt="dotnet-core-api-14" class="alignnone size-full wp-image-4397"></a>
+<a href="http://wp.me/p3mRWu-199" target="_blank"><img src="https://chsakell.files.wordpress.com/2016/06/angular-io-logo.png?w=700" alt="dotnet-core-api-14" class="alignnone size-full wp-image-4397"></a>
 <h3>Installation Instructions</h3>
 <ol>
 <li>Setup the API from <a href="https://github.com/chsakell/dotnetcore-entityframework-api" target="_blank">here</a> or read the accosiated <a href="http://wp.me/p3mRWu-18G" target="_blank">post</a></li>
@@ -67,3 +67,5 @@ If you think that any information you obtained here is worth of some money and a
 </tr>
 </tbody>
 </table>
+<h3>License</h3>
+Code released under the <a href="https://github.com/chsakell/angular2-features/blob/master/licence" target="_blank"> MIT license</a>.
