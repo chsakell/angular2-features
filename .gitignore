@@ -1,5 +1,5 @@
-app/**/*.js
-app/**/*.map
+src/app/**/*.js
+src/app/**/*.map
 node_modules
 bower_components
 typings

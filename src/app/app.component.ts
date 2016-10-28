@@ -4,8 +4,9 @@
 import './rxjs-operators';
 
 @Component({
+    moduleId: module.id,
     selector: 'scheduler',
-    templateUrl: 'app/app.component.html'
+    templateUrl: 'app.component.html'
 })
 export class AppComponent {
 
