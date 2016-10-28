@@ -42,7 +42,7 @@
     "tslint": "^3.10.2"
   },
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite --baseDir ./app --port 8000\" ",
+    "serve": "tsc && concurrently \"npm run tsc:w\" \"npm run lite --baseDir ./app --port 8000\" ",
     "lite": "lite-server",
     "postinstall": "typings install",
     "tsc": "tsc",
