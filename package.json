@@ -32,9 +32,10 @@
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
-    "del": "^2.2.0",
-    "gulp": "^3.9.1",
-    "gulp-tslint": "^5.0.0",
+    "gulp" : "3.9.1",
+    "gulp-replace": "0.5.4",
+    "del" : "2.2.2",
+    "gulp-sourcemaps": "2.2.0",
     "jquery": "^3.0.0",
     "lite-server": "^2.2.0",
     "typescript": "2.0.2",
