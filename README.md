@@ -18,7 +18,7 @@ It shows how to use several controls such as <i>Modals</i>, <i>DateTimePicker</i
 </ol>
 </li>
 <li>Start the API and set the <i>_apiURI</i> inside the <b>utils/config.service.ts</b> to point it</li>
-<li>Start the SPA by typing <b>npm run serve</b></li>
+<li>Start the SPA by typing <b>npm start</b></li>
 </ol>
 
 <p>
