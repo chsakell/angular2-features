@@ -1,0 +1,1 @@
+{"__symbolic":"module","version":1,"metadata":{},"exports":[{"from":"./pagination/pager.component","export":["PagerComponent"]},{"from":"./pagination/pagination.component","export":["PaginationComponent"]},{"from":"./pagination/pagination.module","export":["PaginationModule"]}]}

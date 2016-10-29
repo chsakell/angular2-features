@@ -1,0 +1,128 @@
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: whitesmoke;
+}
+
+.hero-spacer {
+    margin-top: 50px;
+}
+
+.hero-feature {
+    margin-bottom: 30px;
+}
+
+footer {
+    margin: 50px 0;
+}
+
+.img-avatar {
+    height: 150px;
+    width: 150px;
+}
+
+.img-small {
+    height: 50px;
+    width: 50px;
+}
+
+.panel-heading h3 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 75%;
+    padding-top: 8px;
+}
+
+.navbar-inverse {
+    background-color: #4765a0;
+    border-color: whitesmoke;
+    border: 2px solid whitesmoke;
+}
+
+.shadowCard {
+    box-shadow: 10px 10px 5px #888888;
+}
+
+.ng-valid[required] {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.table>tbody>tr>td {
+    vertical-align: middle;
+}
+
+.fa {
+  padding-right: 5px;
+}
+
+.navbar-fixed-bottom {
+  background-color: #1d2140;
+  color: whitesmoke;
+}
+
+.carousel-indicators .active {
+    background: #31708f;
+}
+.content {
+    margin-top: 20px;
+}
+.adjust1 {
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+}
+.adjust2 {
+    margin: 0;
+}
+.carousel-indicators li {
+    border: 1px solid #ccc;
+}
+.carousel-control {
+    color: #31708f;
+    width: 5%;
+}
+.carousel-control:hover,
+.carousel-control:focus {
+    color: #31708f;
+}
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none;
+}
+.media-object {
+    margin: auto;
+    margin-top: 15%;
+}
+@media screen and (max-width: 768px) {
+    .media-object {
+        margin-top: 0;
+    }
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
