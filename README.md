@@ -26,7 +26,8 @@ It shows how to use several controls such as <i>Modals</i>, <i>DateTimePicker</i
 <img src="https://chsakell.files.wordpress.com/2016/06/angular-scheduler-spa-hq.gif" alt="angular-features-gif" />
 </a>
 </p>
-
+<h2>Microsoft Azure Deployment</h2>
+Learn how to deploy an Angular 2 app on Microsoft Azure, <a href="http://wp.me/p3mRWu-1bi" target="_blank">here</a>.
 <h2>Donations</h2>
 For being part of open source projects and documenting my work here and on <a href="https://chsakell.com">chsakell's blog</a> I really do not charge anything. I try to avoid any type of ads also.
 
