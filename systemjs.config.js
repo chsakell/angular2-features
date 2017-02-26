@@ -26,7 +26,7 @@
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
             'jquery': 'npm:jquery/',
             'lodash': 'npm:lodash/lodash.js',
-            'moment': 'npm:moment/',
+            'moment': 'npm:moment',
             'ng2-bootstrap': 'npm:ng2-bootstrap',
             'ng2-slim-loading-bar': 'npm:ng2-slim-loading-bar',
             'symbol-observable': 'npm:symbol-observable'
@@ -45,7 +45,7 @@
                 defaultExtension: 'js'
             },
             'moment': { main: 'moment.js', defaultExtension: 'js' },
-            'ng2-bootstrap': { main: 'ng2-bootstrap.js', defaultExtension: 'js' },
+            'ng2-bootstrap': { format: 'cjs', main: 'bundles/ng2-bootstrap.umd.js', defaultExtension: 'js' },
             'ng2-slim-loading-bar': { main: 'index.js', defaultExtension: 'js' },
             'symbol-observable': { main: 'index.js', defaultExtension: 'js' }
         }

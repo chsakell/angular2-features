@@ -5,13 +5,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 
-import { PaginationModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { DatepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { Ng2BootstrapModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { ProgressbarModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { PaginationModule } from 'ng2-bootstrap';
+import { DatepickerModule } from 'ng2-bootstrap';
+//import { Ng2BootstrapModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ModalModule } from 'ng2-bootstrap';
+import { ProgressbarModule } from 'ng2-bootstrap';
 import { SlimLoadingBarService, SlimLoadingBarComponent } from 'ng2-slim-loading-bar';
-import { TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { TimepickerModule } from 'ng2-bootstrap';
 
 import { AppComponent }   from './app.component';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
@@ -33,15 +33,14 @@ import { NotificationService } from './shared/utils/notification.service';
 @NgModule({
     imports: [
         BrowserModule,
-        DatepickerModule,
+        DatepickerModule.forRoot(),
         FormsModule,
         HttpModule,
-        Ng2BootstrapModule,
-        ModalModule,
-        ProgressbarModule,
-        PaginationModule,
+        ModalModule.forRoot(),
+        ProgressbarModule.forRoot(),
+        PaginationModule.forRoot(),
         routing,
-        TimepickerModule
+        TimepickerModule.forRoot()
     ],
     declarations: [
         AppComponent,
