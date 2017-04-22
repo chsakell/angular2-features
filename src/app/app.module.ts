@@ -4,6 +4,7 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule }    from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PaginationModule } from 'ng2-bootstrap';
 import { DatepickerModule } from 'ng2-bootstrap';
@@ -33,6 +34,7 @@ import { NotificationService } from './shared/utils/notification.service';
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         DatepickerModule.forRoot(),
         FormsModule,
         HttpModule,
