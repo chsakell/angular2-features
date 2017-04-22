@@ -2,10 +2,10 @@
 <a href="http://wp.me/p3mRWu-199" taget="_blank">Blog post</a><br/>
 Angular CRUD ops, Modals, Animations, Pagination, DateTimePicker, Directives and much more.. <br/>
 <ul>
-<li>Single Page Application built with <b>Angular 2</b> and <b>TypeScript</b></li>
+<li>Single Page Application built with <b>Angular 4</b> and <b>TypeScript</b></li>
 <li>Back-end API built with <b>ASP.NET Core</b></li>
 </ul>
-It shows how to use several controls such as <i>Modals</i>, <i>DateTimePicker</i>, <i>Pagination</i> in Angular 2 applications.
+It shows how to use several controls such as <i>Modals</i>, <i>DateTimePicker</i>, <i>Pagination</i> in Angular 4 applications.
 <a href="http://wp.me/p3mRWu-199" target="_blank"><img src="https://chsakell.files.wordpress.com/2016/06/angular-io-logo.png?w=700" alt="dotnet-core-api-14" class="alignnone size-full wp-image-4397"></a>
 <h3>Installation Instructions</h3>
 <ol>
@@ -27,7 +27,7 @@ It shows how to use several controls such as <i>Modals</i>, <i>DateTimePicker</i
 </a>
 </p>
 <h2>Microsoft Azure Deployment</h2>
-Learn how to deploy an Angular 2 app on Microsoft Azure, <a href="http://wp.me/p3mRWu-1bi" target="_blank">here</a>.
+Learn how to deploy an Angular 4 app on Microsoft Azure, <a href="http://wp.me/p3mRWu-1bi" target="_blank">here</a>.
 <h2>Donations</h2>
 For being part of open source projects and documenting my work here and on <a href="https://chsakell.com">chsakell's blog</a> I really do not charge anything. I try to avoid any type of ads also.
 
