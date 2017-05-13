@@ -1,0 +1,1 @@
+{"__symbolic":"module","version":1,"metadata":{},"exports":[{"from":"./tabs/tab-heading.directive","export":["TabHeadingDirective"]},{"from":"./tabs/tabset.component","export":["TabsetComponent"]},{"from":"./tabs/tab.directive","export":["TabDirective"]},{"from":"./tabs/tabs.module","export":["TabsModule"]}]}

@@ -1,4 +1,4 @@
-# angular2-features
+# angular2-features - production
 <a href="http://wp.me/p3mRWu-199" taget="_blank">Blog post</a><br/>
 Angular CRUD ops, Modals, Animations, Pagination, DateTimePicker, Directives and much more.. <br/>
 <ul>

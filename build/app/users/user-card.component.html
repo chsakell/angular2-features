@@ -1,0 +1,78 @@
+<div class="panel panel-primary" [ngClass]="{shadowCard: onEdit}" [@flyInOut]="'in'">
+    <div class="panel-heading">
+        <h3 class="panel-title pull-left" [class.hidden]="onEdit"><i class="fa fa-user" aria-hidden="true"></i>{{edittedUser.name}}</h3>
+        <input [(ngModel)]="edittedUser.name" [class.hidden]="!onEdit" [style.color]="'brown'" required class="form-control" />
+        <div class="clearfix"></div>
+    </div>
+
+    <div highlight="whitesmoke" class="panel-body">
+        <div class="">
+            <img src="{{apiHost}}images/{{edittedUser.avatar}}" class="img-avatar" alt="">
+            <div class="caption">
+                <p>
+                    <span [class.hidden]="onEdit">{{edittedUser.profession}}</span>
+                </p>
+                <p [hidden]="!onEdit">
+                    <input [(ngModel)]="edittedUser.profession" class="form-control" required />
+                </p>
+                <p>
+                    <button class="btn btn-primary" (click)="viewSchedules(edittedUser)" [disabled]="edittedUser.schedulesCreated === 0">
+                    <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Schedules <span class="badge"> 
+                        {{edittedUser.schedulesCreated}}</span>
+                    </button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div [class.hidden]="edittedUser.id < 0">
+            <button class="btn btn-default btn-xs" (click)="editUser()">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                    {{onEdit === false ? "Edit" : "Cancel"}}
+                </button>
+            <button class="btn btn-default btn-xs" [class.hidden]="!onEdit" (click)="updateUser()" [disabled]="!isUserValid()">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button>
+            <button class="btn btn-danger btn-xs" (click)="openRemoveModal()">
+                <i class="fa fa-times" aria-hidden="true"></i>Remove</button>
+        </div>
+        <div [class.hidden]="!(edittedUser.id < 0)">
+            <button class="btn btn-default btn-xs" [class.hidden]="!onEdit" (click)="createUser()" [disabled]="!isUserValid()">
+                <i class="fa fa-plus" aria-hidden="true"></i>Create</button>
+        </div>
+    </div>
+</div>
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" *ngIf="userSchedulesLoaded">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" aria-label="Close" (click)="hideChildModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                <h4 class="modal-title">{{edittedUser.name}} schedules created</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Place</th>
+                            <th>Time Start</th>
+                            <th>Time End</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let schedule of userSchedules">
+                            <td> {{schedule.title}}</td>
+                            <td>{{schedule.description}}</td>
+                            <td>{{schedule.location}}</td>
+                            <td>{{schedule.timeStart | dateFormat | date:'medium'}}</td>
+                            <td>{{schedule.timeEnd | dateFormat | date:'medium'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
