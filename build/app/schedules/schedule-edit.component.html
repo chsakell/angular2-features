@@ -1,0 +1,114 @@
+<form #editScheduleForm="ngForm" *ngIf="scheduleLoaded" novalidate>
+    <div class="alert alert-danger" [hidden]="editScheduleForm.form.valid">
+        <ul *ngIf="creator.dirty && !creator.valid">
+            <li>Creator name is required <i>(5-50 characters)</i></li>
+        </ul>
+        <ul *ngIf="title.dirty && !title.valid">
+            <li *ngIf="title.errors.required">Title is required</li>
+            <li *ngIf="title.errors.pattern">Title should have 5-20 characters</li>
+        </ul>
+        <ul *ngIf="description.dirty && !description.valid">
+            <li *ngIf="description.errors.required">Description is required</li>
+            <li *ngIf="description.errors.pattern">Description should have at least 10 characters</li>
+        </ul>
+        <ul *ngIf="location.dirty && !location.valid">
+            <li *ngIf="location.errors.required">Location is required</li>
+        </ul>
+    </div>
+
+    <button type="button" class="btn btn-danger" (click)="back()">
+        <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>Back</button>
+    <button type="button" [disabled]="!editScheduleForm.form.valid" class="btn btn-default" (click)="updateSchedule(editScheduleForm)">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>Update</button>
+
+    <hr/>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label"><i class="fa fa-user" aria-hidden="true"></i>Creator</label>
+                <input type="text" class="form-control" [(ngModel)]="schedule.creator" name="creator" #creator="ngModel" required pattern=".{5,50}"
+                    disabled />
+            </div>
+
+            <div class="col-md-4">
+                <label class="control-label"><i class="fa fa-text-width" aria-hidden="true"></i>Title</label>
+                <input type="text" class="form-control" [(ngModel)]="schedule.title" name="title" #title="ngModel" required pattern=".{5,20}"
+                />
+            </div>
+
+            <div class="col-md-4">
+                <label class="control-label"><i class="fa fa-paragraph" aria-hidden="true"></i>Description</label>
+                <input type="text" class="form-control" [(ngModel)]="schedule.description" name="description" #description="ngModel" required
+                    pattern=".{10,}" />
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-6">
+                <label class="control-label"><i class="fa fa-calendar-o" aria-hidden="true"></i>Time Start</label>
+                <datepicker [(ngModel)]="schedule.timeStart" name="timeStartDate" [showWeeks]="false"></datepicker>
+                <timepicker [(ngModel)]="schedule.timeStart" name="timeStartTime" (change)="changed()" [hourStep]="1" [minuteStep]="15" [showMeridian]="true"></timepicker>
+            </div>
+
+            <div class="col-xs-6">
+                <label class="control-label"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Time End</label>
+                <datepicker [(ngModel)]="schedule.timeEnd" name="timeEndDate" [showWeeks]="false"></datepicker>
+                <timepicker [(ngModel)]="schedule.timeEnd" name="timeEndTime" (change)="changed()" [hourStep]="1" [minuteStep]="15" [showMeridian]="true"></timepicker>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="control-label"><i class="fa fa-map-marker" aria-hidden="true"></i>Location</label>
+                <input type="text" class="form-control" [(ngModel)]="schedule.location" name="location" #location="ngModel" required />
+            </div>
+
+            <div class="col-md-4 selectContainer">
+                <label class="control-label"><i class="fa fa-spinner" aria-hidden="true"></i>Status</label>
+                <select class="form-control" [(ngModel)]="schedule.status" name="status">
+                    <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
+                </select>
+            </div>
+            <div class="col-md-4 selectContainer">
+                <label class="control-label"><i class="fa fa-tag" aria-hidden="true"></i>Type</label>
+                <select class="form-control" [(ngModel)]="schedule.type" name="type">
+                    <option *ngFor="let type of types" [value]="type">{{type}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <div class="panel panel-info">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Attendes</div>
+
+        <!-- Table -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th><i class="fa fa-user" aria-hidden="true"></i>Name</th>
+                    <th><i class="fa fa-linkedin-square" aria-hidden="true"></i>Profession</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let attendee of schedule.attendees">
+                    <td [style.valign]="'middle'">
+                        <img class="img-thumbnail img-small" src="{{apiHost}}images/{{attendee.avatar}}" alt="attendee.name" />
+                    </td>
+                    <td [style.valign]="'middle'">{{attendee.name}}</td>
+                    <td [style.valign]="'middle'">{{attendee.profession}}</td>
+                    <td [style.valign]="'middle'">
+                        <button type="button" class="btn btn-danger btn-sm" (click)="removeAttendee(attendee)"><i class="fa fa-user-times" aria-hidden="true"></i>Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</form>

@@ -1,0 +1,1 @@
+{"__symbolic":"module","version":1,"metadata":{},"exports":[{"from":"./progressbar/bar.component","export":["BarComponent"]},{"from":"./progressbar/progress.directive","export":["ProgressDirective"]},{"from":"./progressbar/progressbar.component","export":["ProgressbarComponent"]},{"from":"./progressbar/progressbar.module","export":["ProgressbarModule"]}]}

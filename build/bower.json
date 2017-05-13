@@ -1,0 +1,9 @@
+{
+  "name": "scheduler.spa",
+  "private": true,
+  "dependencies": {
+    "alertify.js" : "0.3.11",
+    "bootstrap": "^3.3.6",
+    "font-awesome": "latest"
+  }
+}

@@ -1,0 +1,1 @@
+{"__symbolic":"module","version":1,"metadata":{},"exports":[{"from":"./carousel/carousel.component","export":["CarouselComponent"]},{"from":"./carousel/carousel.module","export":["CarouselModule"]},{"from":"./carousel/slide.component","export":["SlideComponent"]}]}
