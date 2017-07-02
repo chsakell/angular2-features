@@ -1,6 +1,7 @@
-# angular2-features
-<a href="http://wp.me/p3mRWu-199" taget="_blank">Blog post</a><br/>
-Angular CRUD ops, Modals, Animations, Pagination, DateTimePicker, Directives and much more.. <br/>
+# Angular CRUD ops, Modals, Animations, Pagination, DateTimePicker, Directives and much more..
+[![Build status](https://ci.appveyor.com/api/projects/status/github/chsakell/angular2-features?branch=master&svg=true)](https://ci.appveyor.com/project/chsakell/angular2-features/branch/master)
+<br/>
+<a href="http://wp.me/p3mRWu-199" taget="_blank">Read blog post</a><br/>
 <ul>
 <li>Single Page Application built with <b>Angular 4</b> and <b>TypeScript</b></li>
 <li>Back-end API built with <b>ASP.NET Core</b></li>
