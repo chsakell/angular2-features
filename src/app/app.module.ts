@@ -29,6 +29,8 @@ import { ConfigService } from './shared/utils/config.service';
 import { ItemsService } from './shared/utils/items.service';
 import { MappingService } from './shared/utils/mapping.service';
 import { NotificationService } from './shared/utils/notification.service';
+import { UrlSerializer } from '@angular/router';
+import { LowerCaseUrlSerializer } from './shared/utils/lower-case-url-serializer';
 
 @NgModule({
     imports: [
@@ -61,7 +63,11 @@ import { NotificationService } from './shared/utils/notification.service';
         ItemsService,
         MappingService,
         NotificationService,
-        SlimLoadingBarService
+        SlimLoadingBarService,
+        {
+            provide: UrlSerializer,
+            useClass: LowerCaseUrlSerializer
+        }
     ],
     bootstrap: [AppComponent]
 })
