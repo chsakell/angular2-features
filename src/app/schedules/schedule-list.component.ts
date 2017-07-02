@@ -5,7 +5,7 @@ import { Component, OnInit, ViewChild, Input, Output,
     animate,
     transition } from '@angular/core';
 
-import { ModalDirective } from 'ng2-bootstrap';
+import { ModalDirective } from 'ngx-bootstrap';
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 
 import { DataService } from '../shared/services/data.service';

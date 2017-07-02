@@ -90,7 +90,7 @@ gulp.task("libs", function () {
             { base: 'node_modules/' })
             .pipe(gulp.dest(lib));
 
-    gulp.src('node_modules/' + "ng2-bootstrap/**/*",
+    gulp.src('node_modules/' + "ngx-bootstrap/**/*",
             { base: 'node_modules/' })
             .pipe(gulp.dest(lib));
 

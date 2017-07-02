@@ -6,13 +6,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule }    from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { PaginationModule } from 'ng2-bootstrap';
-import { DatepickerModule } from 'ng2-bootstrap';
-//import { Ng2BootstrapModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { ModalModule } from 'ng2-bootstrap';
-import { ProgressbarModule } from 'ng2-bootstrap';
+import { PaginationModule } from 'ngx-bootstrap';
+import { DatepickerModule } from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
+import { ProgressbarModule } from 'ngx-bootstrap';
 import { SlimLoadingBarService, SlimLoadingBarComponent } from 'ng2-slim-loading-bar';
-import { TimepickerModule } from 'ng2-bootstrap';
+import { TimepickerModule } from 'ngx-bootstrap';
 
 import { AppComponent }   from './app.component';
 import { DateFormatPipe } from './shared/pipes/date-format.pipe';
